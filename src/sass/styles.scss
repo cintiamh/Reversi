@@ -1,7 +1,20 @@
-$font-stack:    Helvetica, sans-serif;
-$primary-color: #999;
+$font-stack: Helvetica, sans-serif;
+$primary-color: #333;
 
 body {
   font: 100% $font-stack;
   color: $primary-color;
+
+  div#main {
+    h1 {
+      color: mediumvioletred;
+    }
+    canvas {
+      width: 100%;
+      max-width: 800px;
+      border: 1px solid black;
+      background-color: #009E0B;
+    }
+  }
 }
+
