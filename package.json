@@ -33,6 +33,7 @@
     "gulp-util": "^3.0.6",
     "karma": "^0.13.9",
     "karma-browserify": "^4.3.0",
+    "karma-chrome-launcher": "^0.2.0",
     "karma-mocha": "^0.2.0",
     "karma-nyan-reporter": "^0.2.2",
     "karma-phantomjs-launcher": "^0.2.1",

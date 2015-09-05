@@ -8,14 +8,27 @@ describe('Reversi', function() {
         expect(game.getContext()).to.not.exist;
     });
 
-    it ('should be able to set context with canvas', function() {
-        var canvas = document.createElement('canvas');
-        document.body.appendChild(canvas);
-        var instance = document.getElementsByTagName('canvas')[0];
-        var game = new Reversi(instance);
-        expect(game).to.exist;
-        console.log(game.getContext());
-        expect(game.getContext()).to.exist;
-    });
+    //it ('should be able to set context with canvas', function() {
+    //    var canvas = document.createElement('canvas');
+    //    document.body.appendChild(canvas);
+    //    var instance = document.getElementsByTagName('canvas')[0];
+    //    var game = new Reversi(instance);
+    //    expect(game).to.exist;
+    //    var ctx = game.getContext();
+    //    expect(ctx).to.exist;
+    //});
+    //
+    //it('should get the canvas size', function() {
+    //    var canvas = document.createElement('canvas');
+    //    document.body.appendChild(canvas);
+    //    var instance = document.getElementsByTagName('canvas')[0];
+    //    var game = new Reversi(instance);
+    //    var size = game.getCanvasSize();
+    //    expect(size).to.be.at.least(100);
+    //});
+    //
+    //it('should draw the board', function() {
+    //
+    //});
 });
 
