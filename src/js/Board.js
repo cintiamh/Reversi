@@ -1,6 +1,5 @@
 var canvas;
 var context;
-var size;
 
 var Board = function(element) {
     canvas = element;
@@ -11,14 +10,30 @@ var Board = function(element) {
 };
 
 Board.prototype = {
+
+    getCanvas: function() {
+        return canvas;
+    },
+
     getContext: function() {
         return context;
     },
 
     getSize: function() {
-        
+        var width;
         if (canvas && canvas.offsetWidth) {
-            var width = canvas.offsetWidth;
+            width = canvas.offsetWidth;
+        }
+        return width;
+    },
+
+    setHeight: function() {
+        var size = this.getSize();
+        if (size > 2) {
+            size = size - 2;
+            if (canvas.style) {
+                canvas.style.height = size + "px";
+            }
         }
     }
 

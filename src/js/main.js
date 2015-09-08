@@ -5,5 +5,5 @@ var canvas = document.getElementById('board');
 
 var game = new Reversi();
 var board = new Board(canvas);
-console.log("BOARD", board);
-board.getSize();
+console.log("BOARD", board.getSize());
+board.setHeight();

@@ -1,5 +1,10 @@
 $font-stack: Helvetica, sans-serif;
 $primary-color: #333;
+$pink-color: #FF5877;
+$dark-green: #28AD7C;
+$blue-color: #535FA3;
+$orange-color: #FF6E4A;
+$light-green: #CCE574;
 
 body {
   font: 100% $font-stack;
@@ -7,13 +12,13 @@ body {
 
   div#main {
     h1 {
-      color: mediumvioletred;
+      color: $pink-color;
     }
     canvas {
       width: 100%;
       max-width: 800px;
-      border: 1px solid black;
-      background-color: #009E0B;
+      border: 1px solid $primary-color;
+      background-color: $dark-green;
     }
   }
 }

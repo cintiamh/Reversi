@@ -36,6 +36,9 @@ describe('Board', function() {
 
         it ('should be able to get canvas size', function() {
             var size = board.getSize();
-        })
+            expect(size).to.exist;
+            expect(size).to.be.above(50);
+        });
+
     })
 });
