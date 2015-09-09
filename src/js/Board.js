@@ -21,6 +21,7 @@ function resize(config) {
     config.canvas.height = size;
 
     draw(config.context, size);
+    config.size = size;
 
     return size;
 }
@@ -77,6 +78,10 @@ Board.prototype = {
 
     getContext: function() {
         return this.config.context;
+    },
+
+    getSize: function() {
+        return this.config.size;
     }
 };
 

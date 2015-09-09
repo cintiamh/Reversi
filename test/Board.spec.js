@@ -15,17 +15,26 @@ describe('Board', function() {
 
     describe('methods', function() {
         var board;
-        var instance;
+        var mainDom;
+        var boardDom;
+
         before(function() {
+            var main = document.createElement('div');
+            main.id = 'main';
             var canvas = document.createElement('canvas');
-            document.body.appendChild(canvas);
-            instance = document.getElementsByTagName('canvas')[0];
-            board = new Board(instance);
+            canvas.id = 'board';
+            main.appendChild(canvas);
+            document.body.appendChild(main);
+
+            mainDom = document.getElementById('main');
+            boardDom = document.getElementById('board');
+
+            board = new Board(mainDom, boardDom);
         });
 
         after(function() {
-            if (instance) {
-                document.body.removeChild(instance);
+            if (mainDom) {
+                document.body.removeChild(mainDom);
             }
         });
 
