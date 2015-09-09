@@ -11,13 +11,13 @@ body {
   color: $primary-color;
 
   div#main {
-    h1 {
-      color: $pink-color;
-    }
-    canvas {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    canvas#board {
       width: 100%;
-      max-width: 800px;
-      border: 1px solid $primary-color;
+      height: 100%;
       background-color: $dark-green;
     }
   }
