@@ -8,7 +8,7 @@ describe('Reversi', function() {
         expect(game.getContext()).to.not.exist;
     });
 
-    //it ('should be able to set context with canvas', function() {
+    //it ('should be able to set xcontext with canvas', function() {
     //    var canvas = document.createElement('canvas');
     //    document.body.appendChild(canvas);
     //    var instance = document.getElementsByTagName('canvas')[0];

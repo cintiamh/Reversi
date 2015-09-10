@@ -1,11 +1,12 @@
 var Board = require('./Board');
+var Piece = require('./Piece');
 
 var canvasEl;
 var context;
 var canvasSize;
 
-function Reversi(canvas) {
-    var board = new Board(canvas);
+function Reversi(parent, canvas) {
+    var board = new Board(parent, canvas);
 }
 
 Reversi.prototype = {
