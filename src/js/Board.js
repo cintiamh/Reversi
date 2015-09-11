@@ -10,6 +10,8 @@ function resize(config) {
     else {
         size = newWidth;
     }
+    var part = Math.floor(size / 8);
+    size = part * 8;
 
     config.main.style.height = size + 'px';
     config.main.style.width = size + 'px';
@@ -20,17 +22,17 @@ function resize(config) {
     config.canvas.width = size;
     config.canvas.height = size;
 
-    draw(config.context, size);
+    draw(config.context, part, size);
+    config.part = part;
     config.size = size;
 
     return size;
 }
 
-function draw(context, size) {
+function draw(context, part, size) {
     context.fillStyle = "#000000";
     context.lineWidth = "1px";
-    var part = Math.ceil(size / 8);
-    drawLine({x:100, y:0}, {x:100, y:800});
+
     for (var i = 0; i <= 8; i++) {
         // Horizontal Lines
         drawLine(context, {x: 0, y: part * i}, {x: size, y: part * i});
@@ -82,6 +84,10 @@ Board.prototype = {
 
     getSize: function() {
         return this.config.size;
+    },
+
+    getPart: function() {
+        return this.config.part;
     }
 };
 

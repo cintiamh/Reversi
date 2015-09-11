@@ -7,6 +7,9 @@ var canvasSize;
 
 function Reversi(parent, canvas) {
     var board = new Board(parent, canvas);
+    var context = board.getContext();
+    var part = board.getPart();
+    //var piece = new Piece(context, 3, 2, '#ffffff', part);
 }
 
 Reversi.prototype = {
