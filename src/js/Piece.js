@@ -6,8 +6,10 @@ function draw(context, posX, posY, part, color) {
 
     path.arc(x, y, radius, 0, Math.PI * 2, false);
 
-    context.fillStyle = color;
-    context.fill(path);
+    if (context) {
+        context.fillStyle = color;
+        context.fill(path);
+    }
 }
 
 var Piece = function(context, posX, posY, color, part) {
