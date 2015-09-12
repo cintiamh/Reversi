@@ -1,36 +1,47 @@
 var Board = require('./Board');
 var Piece = require('./Piece');
 
-var canvasEl;
-var context;
-var canvasSize;
-
 function Reversi(parent, canvas) {
-    var board = new Board(parent, canvas);
-    var context = board.getContext();
-    var part = board.getPart();
+    // Prevent the screen to move on touch.
+    document.body.addEventListener('touchmove', function(event) {
+        event.preventDefault();
+    }, false);
+
+    this.canvas = canvas;
+    this.parent = parent;
+    this.board = new Board(parent, canvas);
+    this.context = this.board.getContext();
+    this.part = this.board.getPart();
+    this.pieces = [];
+
+    this.startGame();
+
+
     //var piece = new Piece(context, 3, 2, '#ffffff', part);
 }
 
 Reversi.prototype = {
-    getContext: function() {
-        return context;
+    startGame: function() {
+        this.pieces = [];
+        // create the initial pieces in center.
+        this.player1(4, 3);
+        this.player1(3, 4);
+        this.player2(3, 3);
+        this.player2(4, 4);
     },
 
-    getCanvasSize: function() {
-        if (canvasEl && canvasEl.offsetWidth) {
-            canvasSize = canvasEl.offsetWidth;
-        }
-        else {
-            canvasSize = 800;
-        }
-        return canvasSize;
+    createPiece: function(x, y, color) {
+        this.pieces.push(new Piece(this.context, x, y, color, this.part));
     },
 
-    drawBoard: function() {
-        var space = Math.floor(canvasSize / 8);
-        console.log(canvasSize, space);
+    player1: function(x, y) {
+        this.createPiece(x, y, '#000000');
+    },
+
+    player2: function(x, y) {
+        this.createPiece(x, y, '#FFFFFF');
     }
+
 };
 
 module.exports = Reversi;
