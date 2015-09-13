@@ -15,9 +15,6 @@ function Reversi(parent, canvas) {
     this.pieces = [];
 
     this.startGame();
-
-
-    //var piece = new Piece(context, 3, 2, '#ffffff', part);
 }
 
 Reversi.prototype = {
@@ -28,6 +25,17 @@ Reversi.prototype = {
         this.player1(3, 4);
         this.player2(3, 3);
         this.player2(4, 4);
+
+        var redraw = this.redrawAll;
+        var board = this.board;
+        var pieces = this.pieces;
+
+        window.addEventListener('resize', function() {
+            redraw(board, pieces);
+        }, false);
+        window.addEventListener('orientationchange', function() {
+            redraw(board, pieces);
+        }, false);
     },
 
     createPiece: function(x, y, color) {
@@ -40,6 +48,20 @@ Reversi.prototype = {
 
     player2: function(x, y) {
         this.createPiece(x, y, '#FFFFFF');
+    },
+
+    redrawAll: function(board, pieces) {
+        var part;
+
+        if (board && board.redraw) {
+            board.redraw();
+            part = board.getPart();
+        }
+        pieces.map(function(piece) {
+            if (piece && piece.redraw) {
+                piece.redraw(part);
+            }
+        });
     }
 
 };

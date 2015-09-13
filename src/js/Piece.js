@@ -36,8 +36,9 @@ Piece.prototype = {
         return this.config.color;
     },
 
-    redraw: function() {
+    redraw: function(part) {
         var config = this.config;
+        config.part = part ? part : config.part;
         draw(config.context, config.posX, config.posY, config.part, config.color);
     }
 };

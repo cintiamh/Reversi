@@ -1,34 +1,3 @@
-function resize(config) {
-    var newWidth = window.innerWidth;
-    var newHeight = window.innerHeight;
-    var newWidthToHeight = newWidth / newHeight;
-    var size;
-
-    if (newWidthToHeight > 1) {
-        size = newHeight;
-    }
-    else {
-        size = newWidth;
-    }
-    var part = Math.floor(size / 8);
-    size = part * 8;
-
-    config.main.style.height = size + 'px';
-    config.main.style.width = size + 'px';
-
-    config.main.style.marginTop = (-size / 2) + 'px';
-    config.main.style.marginLeft = (-size / 2) + 'px';
-
-    config.canvas.width = size;
-    config.canvas.height = size;
-
-    draw(config.context, part, size);
-    config.part = part;
-    config.size = size;
-
-    return size;
-}
-
 function draw(context, part, size) {
     context.fillStyle = "#000000";
     context.lineWidth = "1px";
@@ -62,13 +31,14 @@ var Board = function(main, canvas) {
 
     if (canvas && canvas.getContext) {
         config.context = canvas.getContext('2d');
-        config.size = resize(config);
-        window.addEventListener('resize', function() {
-            config.size = resize(config);
-        }, false);
-        window.addEventListener('orientationchange', function() {
-            config.size = resize(config);
-        }, false);
+        this.redraw();
+        //config.size = resize(config);
+        //window.addEventListener('resize', function() {
+        //    config.size = resize(config);
+        //}, false);
+        //window.addEventListener('orientationchange', function() {
+        //    config.size = resize(config);
+        //}, false);
     }
 };
 
@@ -88,6 +58,39 @@ Board.prototype = {
 
     getPart: function() {
         return this.config.part;
+    },
+
+    redraw: function() {
+        var newWidth = window.innerWidth;
+        var newHeight = window.innerHeight;
+        var newWidthToHeight = newWidth / newHeight;
+        var config = this.config;
+        var size;
+
+        if (newWidthToHeight > 1) {
+            size = newHeight;
+        }
+        else {
+            size = newWidth;
+        }
+        var part = Math.floor(size / 8);
+        size = part * 8;
+
+        config.main.style.height = size + 'px';
+        config.main.style.width = size + 'px';
+
+        config.main.style.marginTop = (-size / 2) + 'px';
+        config.main.style.marginLeft = (-size / 2) + 'px';
+
+        config.canvas.width = size;
+        config.canvas.height = size;
+
+        draw(config.context, part, size);
+
+        config.part = part;
+        config.size = size;
+
+        console.log("REDRAW BOARD", this.config);
     }
 };
 
