@@ -21,9 +21,7 @@ var Piece = function(context, posX, posY, color, part) {
         part: part ? part : 0
     };
 
-    var config = this.config;
-
-    draw(config.context, config.posX, config.posY, config.part, config.color);
+    this.redraw();
 };
 
 Piece.prototype = {
@@ -36,6 +34,11 @@ Piece.prototype = {
 
     getColor: function() {
         return this.config.color;
+    },
+
+    redraw: function() {
+        var config = this.config;
+        draw(config.context, config.posX, config.posY, config.part, config.color);
     }
 };
 
