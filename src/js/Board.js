@@ -32,13 +32,6 @@ var Board = function(main, canvas) {
     if (canvas && canvas.getContext) {
         config.context = canvas.getContext('2d');
         this.redraw();
-        //config.size = resize(config);
-        //window.addEventListener('resize', function() {
-        //    config.size = resize(config);
-        //}, false);
-        //window.addEventListener('orientationchange', function() {
-        //    config.size = resize(config);
-        //}, false);
     }
 };
 
@@ -89,8 +82,6 @@ Board.prototype = {
 
         config.part = part;
         config.size = size;
-
-        console.log("REDRAW BOARD", this.config);
     }
 };
 
